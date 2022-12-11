@@ -92,12 +92,75 @@ function App() {
 
 
   }
+  const marked = id => {
+
+    fetch(`http://localhost:5000/marked/${id}`, {
+
+
+      method: "PUT",
+
+
+
+
+    })
+
+      .then(res => res.json())
+      .then(data => {
+
+        console.log(data)
+        if (data.modifiedCount > 0) {
+
+          toast.success('Marked')
+          refetch()
+
+        }
+
+
+
+      })
+
+
+
+  }
+  const unmarked = id => {
+
+    fetch(`http://localhost:5000/!marked/${id}`, {
+
+
+      method: "PUT",
+
+
+
+
+    })
+
+      .then(res => res.json())
+      .then(data => {
+
+        console.log(data)
+        if (data.modifiedCount > 0) {
+
+          toast.success('unmarked')
+          refetch()
+
+        }
+
+
+
+      })
+
+
+
+  }
 
 
 
 
 
-  console.log(tabledata)
+
+
+
+
 
 
   return (
@@ -115,20 +178,22 @@ function App() {
               <th>Fullname</th>
               <th>Status</th>
               <th>Action</th>
-              <th> <button className='btn btn-secondary' onClick={() => setIsAsc(!isAsc)}>{isAsc ? 'dsc' : 'asc'}</button></th>
+              <th> <button className='btn btn-warning btn-sm' onClick={() => setIsAsc(!isAsc)}>{isAsc ? 'dsc' : 'asc'}</button></th>
 
             </tr>
           </thead>
           {
 
-            tabledata?.map((table, index) => <tbody  key={index}>
-              <tr className={table.status ? 'active' : 'bg-green-600'} >
+            tabledata?.map((table, index) => <tbody key={index}>
+              <tr className={table.active ? 'active' : ''} >
                 <th>{index + 1}</th>
                 <td>{table.firstName}</td>
                 <td>{table.lastName} </td>
                 <td>{table.age}</td>
                 <td>{table.fullname}</td>
                 <td>{table.status ? <button className='text-green-600' onClick={() => selected(table._id)}>True</button> : <button className='text-red-600' onClick={() => notselected(table._id)}>Failed</button>}</td>
+                <td>{!table.active ? <button  onClick={() => marked(table._id)}>Marked</button> : <button onClick={() => unmarked(table._id)}>Unmarked</button>}</td>
+
               </tr>
 
             </tbody>)
@@ -136,9 +201,9 @@ function App() {
           }
         </table>
 
-        
+
       </div>
-      
+
       <Toaster></Toaster>
     </div>
   );
