@@ -1,0 +1,43 @@
+[
+    {
+       
+        "firstName": "John",
+        "lastName": "Wick",
+        "age": "38",
+        "fullname": "John Wick"
+      
+    },
+    {
+       
+        "firstName": "Snow",
+        "lastName": "White",
+        "age": "68",
+        "fullname": "Snow White"
+      
+    },
+    {
+       
+        "firstName": "Neymar",
+        "lastName": "Jr",
+        "age": "34",
+        "fullname": "Neymar jr"
+      
+    },
+    {
+       
+        "firstName": "Ronaldo",
+        "lastName": "Portugal",
+        "age": "39",
+        "fullname": "Ronaldo portugal"
+      
+    },
+    {
+       
+        "firstName": "Messi",
+        "lastName": "Boss",
+        "age": "41",
+        "fullname": "Messi Boss "
+      
+    }
+    
+]
